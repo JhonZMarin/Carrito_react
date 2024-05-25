@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import styles from '../styles/Carrito.module.css'; 
 function Carrito({ itemsCarrito }) {
   const [mostrarProductos, setMostrarProductos] = useState(false);
 
@@ -8,18 +8,19 @@ function Carrito({ itemsCarrito }) {
   const toggleMostrarProductos = () => {
     setMostrarProductos(!mostrarProductos);
   };
+
   return (
-    <div>
-      <h2>Carrito de Compras</h2>
-      <p>Total de elementos en el carrito: {totalElementos}</p>
-      <button onClick={toggleMostrarProductos}>
+    <div className={styles.carritoContainer}>
+      <h2 className={styles.carritoTitle}>Carrito de Compras</h2>
+      <p className={styles.totalElementos}>Total de elementos en el carrito: {totalElementos}</p>
+      <button className={styles.toggleButton} onClick={toggleMostrarProductos}>
         {mostrarProductos ? 'Ocultar productos del carrito' : 'Mostrar productos del carrito'}
       </button>
       {mostrarProductos && (
-        <ul>
+        <ul className={styles.productosList}>
           {itemsCarrito.map((item, index) => (
-            <li key={index}>
-              {item.producto.title} - Cantidad: {item.cantidad}
+            <li key={index} className={styles.productoItem}>
+              <span>{item.producto.title}</span> - <span>Cantidad: {item.cantidad}</span>
             </li>
           ))}
         </ul>

@@ -3,6 +3,7 @@ import Listado from './Listado';
 import DetalleProducto from './DetalleProducto';
 import Categorias from './Categorias';
 import Carrito from './Carrito';
+import styles from '../styles/app.module.css'; 
 
 function App() {
   const [productos, setProductos] = useState([]);
@@ -68,11 +69,11 @@ function App() {
   };
 
   return (
-    <div>
-      <h1>Fake Store API</h1>
-      <div>
-        <label htmlFor="categoria-select">Filtrar Productos:</label>
-        <select id="categoria-select" onChange={(e) => handleSeleccionarCategoria(e.target.value)} defaultValue="">
+    <div className={styles.appContainer}>
+      <h1 className={styles.title}>Fake Store API</h1>
+      <div className={styles.selectContainer}>
+        <label htmlFor="categoria-select" className={styles.label}>Filtrar Productos:</label>
+        <select id="categoria-select" onChange={(e) => handleSeleccionarCategoria(e.target.value)} defaultValue="" className={styles.select}>
           <option value="" disabled>Selecciona una categoría</option>
           <option value="all">Todos</option>
           {categorias.map(categoria => (
